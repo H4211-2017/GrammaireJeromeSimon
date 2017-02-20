@@ -27,7 +27,7 @@ using namespace std;
 //-------------------------------------------------------- Fonctions amies
 
 //----------------------------------------------------- Méthodes publiques
-	void decalage(Token t, int etat) 
+	void Automate::decalage(Token t, int etat)
 	{
 		State* etatPt;
 		switch(etat)
@@ -62,15 +62,15 @@ using namespace std;
 			case 9:
 				etatPt = new State9(t);
 				break;
-				
+
 		}
-		
+
 		lexer.consume();
 		this->pileEtat.push(etatPt);
 		this->pileToken.push(t);
 	}
-	
-    void reduction(int regle) 
+
+    void Automate::reduction(int regle)
     {
 		switch(regle)
 		{
@@ -84,10 +84,10 @@ using namespace std;
 				break;
 		}
 	}
-	
-    void accepter() 
+
+    void Automate::accepter()
     {
-		fini = true;
+		this->fini = true;
 	}
 
 
@@ -103,7 +103,7 @@ Automate::Automate (string input) : pileEtat(), pileToken()
 #ifdef MAP
     cout << "Appel au constructeur de <Automate>" << endl;
 #endif
-	
+
 	this->lexer = Lexer(input);
 	Token t;
 	State* etatPremier = new State0(t);
@@ -120,7 +120,7 @@ Automate::~Automate ( )
     cout << "Appel au destructeur de <Automate>" << endl;
 #endif
 
-	while(this->pileEtat.size > 0)
+	while(this->pileEtat.size() > 0)
 	{
 		delete this->pileEtat.pop();
 	}
@@ -135,17 +135,17 @@ Automate::~Automate ( )
 
 void Automate::reduction2()
 {
-	
+
 }
 
 void Automate::reduction3()
 {
-	
+
 }
 
 void Automate::reduction4()
 {
-	
+
 }
 
 void Automate::reduction5()

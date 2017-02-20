@@ -36,7 +36,7 @@ State8.o : State.h Lexer.h Automate.h State8.cpp
 State9.o : State.h Lexer.h Automate.h State9.cpp 
 	g++ -c -std=c++11 State9.cpp
 	
-Automate.o : Automate.h Lexer.h Automate.cpp 
+Automate.o : Automate.h Lexer.h State.h Automate.cpp 
 	g++ -c -std=c++11 Automate.cpp	
 
 main.o : Lexer.h main.cpp
