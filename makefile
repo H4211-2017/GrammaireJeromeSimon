@@ -4,7 +4,7 @@ Grammaire : Lexer.o State0.o State1.o State2.o State3.o State4.o State5.o State6
 	g++ -std=c++11 -o Grammaire Lexer.o main.o
 
 Lexer.o : Lexer.h Lexer.cpp
-	g++ -c -std=c++11 Lexer.cpp
+	g++ -c -std=c++11 Lexer.cpp -D MINGW
 	
 State0.o : State.h Lexer.h Automate.h State0.cpp
 	g++ -c -std=c++11 State0.cpp

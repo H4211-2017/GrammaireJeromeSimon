@@ -12,10 +12,17 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-
+#include <cstring>
 //------------------------------------------------------ Include personnel
 #include "Lexer.h"
-
+#ifdef MINGW
+#include <sstream>
+int stoi(string text){
+         int number;
+         if ( ! (stringstream(text) >> number) ) number = 0;
+         return number;
+}
+#endif
 //------------------------------------------------------------- Constantes
 
 //---------------------------------------------------- Variables de classe
@@ -33,18 +40,18 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-Token Lexer::readNext() 
+Token Lexer::readNext()
 {
 	return this->curToken;
 }
-    
+
 Token Lexer::consume()
 {
 	int nbOfChar = this->curToken.strValue.length();
 	this->input = this->input.substr(nbOfChar);
 	Token copy = this->curToken;
 	defineCurToken();
-	
+
 	return copy;
 }
 
@@ -58,9 +65,9 @@ Lexer & Lexer::operator = ( const Lexer & unLexer )
 {
 	this->input = string(unLexer.input);
 	this->curToken = unLexer.curToken;
-	
+
 	return *this;
-} 
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -74,7 +81,7 @@ Lexer::Lexer ( string input )
 	this->purifyInput();
 	defineCurToken();
 	//Calcul de nextIndex et de currentToken
-	
+
 } //----- Fin de Lexer
 
 Lexer::Lexer ( const Lexer & unLexer)
@@ -93,7 +100,7 @@ Lexer::Lexer ( const Lexer & unLexer)
 //------------------------------------------------------- Méthodes privées
 
 void Lexer::purifyInput() {
-	
+
 	string tampon = "";
 	string alphabet = "()+*1234567890";
 	for(string::iterator pos = this->input.begin(); pos != this->input.end(); pos++)
@@ -103,9 +110,9 @@ void Lexer::purifyInput() {
 			tampon += *pos;
 		}
 	}
-	
+
 	this->input = tampon;
-	
+
 }
 
 void Lexer::defineType(Token &t, string s)
@@ -129,7 +136,7 @@ void Lexer::defineType(Token &t, string s)
 	}
 }
 
-void Lexer::defineCurToken() 
+void Lexer::defineCurToken()
 {
 	Token t;
 	if(this->input.length() == 0)
@@ -151,18 +158,18 @@ void Lexer::defineCurToken()
 			tampon += car;
 			index++;
 		} while(nombre.find(car) != string::npos);
-		
+
 		if(tampon.length() > 1)
 		{
 			tampon = tampon.substr(0, tampon.length() - 1);
 		}
-		
+
 		defineType(t, tampon);
 		t.strValue = tampon;
 		if(t.type == VAL)
 		{
-			t.value = stoi(tampon);
+			t.value = stoi( tampon );
 		}
 	}
-	this->curToken = t;	
+	this->curToken = t;
 }
