@@ -114,7 +114,10 @@ int Automate::value()
 	return this->pileToken.top().value;
 }
 
-
+int Automate::nbDeConsume()
+{
+	return this->lexer.getNbConsume();
+}
 
 //------------------------------------------------- Surcharge d'opérateurs
 

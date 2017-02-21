@@ -25,6 +25,7 @@ typedef struct Token{
 	string strValue = "0";
 } Token;
 
+string convertTokenToString(Token t);
 
 //------------------------------------------------------------------------ 
 // Rôle de la classe <Lexer>
@@ -43,6 +44,8 @@ public:
     Token consume();
 
 	void printInput();
+	
+	int getNbConsume();
 	
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -69,6 +72,7 @@ protected:
 //----------------------------------------------------- Attributs protégés
 string input;
 Token curToken;
+int nbConsume;
 
 private:
 //------------------------------------------------------- Attributs privés

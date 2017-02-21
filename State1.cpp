@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "State1.h"
@@ -30,7 +31,6 @@ using namespace std;
 
 void State1::nextState(Automate &automate, Token t) 
 {
-	
 	switch(t.type) 
 	{
 		case MULT:
@@ -42,7 +42,11 @@ void State1::nextState(Automate &automate, Token t)
 		case ENDOF:
 			automate.accepter();
 			break;
-			
+		default:
+			stringstream nbConsume;
+			nbConsume << automate.nbDeConsume();
+			string type = "" + convertTokenToString(t);
+			throw string("[State1] Erreur apres lecture du caractere " + nbConsume.str() + " : \ncaractere attendu : \"+,*,$\";\ncaractere trouve : " + type);
 	}
 }
 

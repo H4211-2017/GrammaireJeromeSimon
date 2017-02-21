@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "State9.h"
@@ -30,7 +31,21 @@ using namespace std;
 
 void State9::nextState(Automate &automate, Token t) 
 {
-	automate.reduction(4);
+	switch(t.type)
+	{
+		case PLUS:
+		case MULT:
+		case RPAR:
+		case ENDOF:
+			automate.reduction(4);
+			break;
+			
+		default:
+			stringstream nbConsume;
+			nbConsume << automate.nbDeConsume();
+			string type = "" + convertTokenToString(t);
+			throw string("[State9] Erreur apres lecture du caractere " + nbConsume.str() + " : \ncaractere attendu : \"+, *, ), $\";\ncaractere trouve : " + type);
+	}
 }
 
 //------------------------------------------------- Surcharge d'opérateurs

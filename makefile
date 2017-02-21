@@ -41,3 +41,6 @@ Automate.o : Automate.h Lexer.h State.h State0.h State1.h State2.h State3.h Stat
 
 main.o : Automate.h main.cpp
 	g++ -c -std=c++11 main.cpp
+	
+clean :
+	rm *.o *.exe Grammaire* 

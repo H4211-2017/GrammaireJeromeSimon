@@ -1,0 +1,47 @@
+Resultat : 33
+
+Resultat : 75
+
+Resultat : 33
+
+Resultat : 33
+
+[State6] Erreur apres lecture du caractere 6 : 
+caractere attendu : "+, *, )";
+caractere trouve : $
+[State1] Erreur apres lecture du caractere 5 : 
+caractere attendu : "+,*,$";
+caractere trouve : )
+Resultat : 84
+
+Resultat : 55
+
+[State0] Erreur apres lecture du caractere 0 : 
+caractere attendu : "EXPR, (, VAL";
+caractere trouve : $
+[State0] Erreur apres lecture du caractere 0 : 
+caractere attendu : "EXPR, (, VAL";
+caractere trouve : $
+[State4] Erreur apres lecture du caractere 2 : 
+caractere attendu : "EXPR, (, VAL";
+caractere trouve : *
+[State5] Erreur apres lecture du caractere 2 : 
+caractere attendu : "EXPR, (, VAL";
+caractere trouve : +
+[State3] Erreur apres lecture du caractere 1 : 
+caractere attendu : "+, *, ), $";
+caractere trouve : (
+[State6] Erreur apres lecture du caractere 4 : 
+caractere attendu : "+, *, )";
+caractere trouve : $
+Resultat : 65
+
+[State3] Erreur apres lecture du caractere 1 : 
+caractere attendu : "+, *, ), $";
+caractere trouve : (
+[State3] Erreur apres lecture du caractere 1 : 
+caractere attendu : "+, *, ), $";
+caractere trouve : (
+[State3] Erreur apres lecture du caractere 1 : 
+caractere attendu : "+, *, ), $";
+caractere trouve : (

@@ -29,7 +29,7 @@ class State8 : public State
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void nextState(Automate &automate, Token t) ; 
+    void nextState(Automate &automate, Token t); 
 
 
 //------------------------------------------------- Surcharge d'opérateurs

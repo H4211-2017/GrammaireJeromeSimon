@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "State6.h"
@@ -41,6 +42,11 @@ void State6::nextState(Automate &automate, Token t)
 		case RPAR:
 			automate.decalage(t, 9);
 			break;
+		default:
+			stringstream nbConsume;
+			nbConsume << automate.nbDeConsume();
+			string type = "" + convertTokenToString(t);
+			throw string("[State6] Erreur apres lecture du caractere " + nbConsume.str() + " : \ncaractere attendu : \"+, *, )\";\ncaractere trouve : " + type);
 			
 	}
 }

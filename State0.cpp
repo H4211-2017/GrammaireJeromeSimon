@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <sstream>
 
 //------------------------------------------------------ Include personnel
 #include "State0.h"
@@ -41,7 +42,11 @@ void State0::nextState(Automate &automate, Token t)
 		case VAL:
 			automate.decalage(t, 3);
 			break;
-			
+		default:
+			stringstream nbConsume;
+			nbConsume << automate.nbDeConsume();
+			string type = "" + convertTokenToString(t);
+			throw string("[State0] Erreur apres lecture du caractere " + nbConsume.str() + " : \ncaractere attendu : \"EXPR, (, VAL\";\ncaractere trouve : " + type);	
 	}
 }
 

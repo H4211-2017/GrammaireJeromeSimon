@@ -41,6 +41,7 @@ public:
     void reduction(int regle);
     void accepter();
 	int value();
+	int nbDeConsume();
 
 //------------------------------------------------- Surcharge d'opérateurs
 

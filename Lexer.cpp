@@ -23,6 +23,27 @@ using namespace std;
 
 //----------------------------------------------------------- Types privés
 
+string convertTokenToString(Token t)
+{
+	switch(t.type)
+	{
+		case ENDOF:
+			return "$";
+		case PLUS:
+			return "+";
+		case MULT:
+			return "*";
+		case LPAR:
+			return "(";
+		case RPAR:
+			return ")";
+		case VAL:
+			return "VAL";
+		case EXPR:
+			return "EXPR";
+		
+	}
+}
 
 //----------------------------------------------------------------- PUBLIC
 //-------------------------------------------------------- Fonctions amies
@@ -45,13 +66,18 @@ Token Lexer::consume()
 	this->input = this->input.substr(nbOfChar);
 	Token copy = this->curToken;
 	defineCurToken();
-	
+	nbConsume++;
 	return copy;
 }
 
 void Lexer::printInput()
 {
 	cout << this->input << endl;
+}
+
+int Lexer::getNbConsume() 
+{
+	return nbConsume;
 }
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -66,13 +92,12 @@ Lexer & Lexer::operator = ( const Lexer & unLexer )
 
 //-------------------------------------------- Constructeurs - destructeur
 
-Lexer::Lexer ( string input )
+Lexer::Lexer ( string input ) : input(input), nbConsume(0)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Lexer>" << endl;
 #endif
-	this->input = input;
-	this->purifyInput();
+	purifyInput();
 	defineCurToken();
 	//Calcul de nextIndex et de currentToken
 	
@@ -144,7 +169,7 @@ void Lexer::defineCurToken()
 	{
 		string tampon = "";
 		int index = 0;
-		string nombre = "123456789";
+		string nombre = "0123456789";
 		char car;
 		do
 		{
