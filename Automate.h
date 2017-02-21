@@ -15,6 +15,8 @@
 #include "Lexer.h"
 #include "State.h"
 
+using namespace std;
+
 //--------------------------------------------------- Interfaces utilisées
 
 //------------------------------------------------------------- Constantes 
@@ -38,6 +40,7 @@ public:
     void decalage(Token t, int etat);
     void reduction(int regle);
     void accepter();
+	int value();
 
 //------------------------------------------------- Surcharge d'opérateurs
 

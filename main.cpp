@@ -1,22 +1,17 @@
 #include <iostream>
 
-#include "Lexer.h"
-
 using namespace std;
+
+
+#include "Automate.h"
 
 int main(int argc, char* argv[])
 {
 	string a = "";
 	getline(cin, a);
-	Lexer l(a);
+	Automate automate(a);
 	
-	while(l.readNext().type != ENDOF)
-	{
-		l.printInput();
-		Token t = l.consume();
-		cout << "type : " << t.type << "valeur : " << t.value << "strvaleur : " << t.strValue << endl;
-		
-	}
+	cout << "Calcul : " << automate.value() << endl;
 	
 	return 0;
 }

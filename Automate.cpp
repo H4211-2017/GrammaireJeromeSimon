@@ -108,6 +108,12 @@ void Automate::accepter()
 	fini = true;
 }
 
+int Automate::value()
+{
+	this->pileEtat.top()->nextState(*this, lexer.readNext());
+	return this->pileToken.top().value;
+}
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
@@ -154,17 +160,76 @@ Automate::~Automate ( )
 
 void Automate::reduction2()
 {
+	State* etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	Token t1 = this->pileToken.top();
+	this->pileToken.pop();
+	delete etat;
 	
+	etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	this->pileToken.pop();
+	delete etat;
+	
+	etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	Token t2 = this->pileToken.top();
+	this->pileToken.pop();
+	delete etat;
+	
+	t1.type = EXPR;
+	t1.value += t2.value;
+	t1.strValue = ("" + t1.value);
+	
+	this->pileEtat.top()->nextState(*this, t1);
 }
 
 void Automate::reduction3()
 {
+	State* etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	Token t1 = this->pileToken.top();
+	this->pileToken.pop();
+	delete etat;
 	
+	etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	this->pileToken.pop();
+	delete etat;
+	
+	etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	Token t2 = this->pileToken.top();
+	this->pileToken.pop();
+	delete etat;
+	
+	t1.type = EXPR;
+	t1.value *= t2.value;
+	t1.strValue = ("" + t1.value);
+	
+	this->pileEtat.top()->nextState(*this, t1);
 }
 
 void Automate::reduction4()
 {
+	State* etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	this->pileToken.pop();
+	delete etat;
 	
+	etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	Token t = this->pileToken.top();
+	this->pileToken.pop();
+	delete etat;
+	
+	etat = this->pileEtat.top();
+	this->pileEtat.pop();
+	this->pileToken.pop();
+	delete etat;
+	
+	t.type = EXPR;
+	this->pileEtat.top()->nextState(*this, t);
 }
 
 void Automate::reduction5()
