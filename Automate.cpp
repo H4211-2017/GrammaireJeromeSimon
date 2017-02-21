@@ -75,9 +75,13 @@ void Automate::decalage(Token t, int etat)
 			
 	}
 	
-	lexer.consume();
+	if(t.type != EXPR)
+	{
+		lexer.consume();
+	}
 	this->pileEtat.push(etatPt);
 	this->pileToken.push(t);
+	etatPt->nextState(*this, lexer.readNext());
 }
 
 void Automate::reduction(int regle) 
@@ -85,12 +89,16 @@ void Automate::reduction(int regle)
 	switch(regle)
 	{
 		case 2:
+			reduction2();
 			break;
 		case 3:
+			reduction3();
 			break;
 		case 4:
+			reduction4();
 			break;
 		case 5:
+			reduction5();
 			break;
 	}
 }
@@ -166,7 +174,7 @@ void Automate::reduction5()
 	Token t = this->pileToken.top();
 	this->pileToken.pop();
 	t.type = EXPR;
-	this->pileEtat.push(etat);
-	this->pileToken.push(t);
+	this->pileEtat.top()->nextState(*this, t);
+	delete etat;
 }
 
