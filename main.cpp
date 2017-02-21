@@ -8,8 +8,8 @@ using namespace std;
 #include "Automate.h"
 
 void sansArgs();
-void unArg(char* un);
-void deuxArgs(char* un, char* deux);
+void unArg(string un);
+void deuxArgs(string un, string deux);
 
 int main(int argc, char* argv[])
 {
@@ -41,10 +41,10 @@ void sansArgs()
 
 		cout << "Entrez la formule : ";
 		getline(cin, a);
-		Automate automate(a);
 
 		try 
 		{
+			Automate automate(a);
 			cout << "Resultat : " << automate.value() << endl;
 		}
 		catch(string const& chaine)
@@ -54,12 +54,12 @@ void sansArgs()
 	}
 }
 
-void unArg(char* un)
+void unArg(string un)
 {
 	deuxArgs(un, "resultats.txt");
 }
 
-void deuxArgs(char* un, char* deux)
+void deuxArgs(string un, string deux)
 {
 	string nomFichier(un);
 	ifstream fichier(nomFichier);
@@ -69,10 +69,10 @@ void deuxArgs(char* un, char* deux)
 		stringstream sortie;
 		while(getline(fichier, ligne))
 		{
-			Automate automate(ligne);
-
 			try 
 			{
+				
+				Automate automate(ligne);
 				sortie << "Resultat : " << automate.value() << endl << endl;
 			}
 			catch(string const& chaine)

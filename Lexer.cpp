@@ -122,11 +122,18 @@ void Lexer::purifyInput() {
 	
 	string tampon = "";
 	string alphabet = "()+*1234567890";
+	string carIgnores = " \t";
 	for(string::iterator pos = this->input.begin(); pos != this->input.end(); pos++)
 	{
 		if(alphabet.find(*pos) != string::npos)
 		{
 			tampon += *pos;
+		}
+		else if(carIgnores.find(*pos) == string::npos)
+		{
+			string car = "";
+			car += *pos;
+			throw string("caractere illegal : " + car + "\nArret du traitement");
 		}
 	}
 	
