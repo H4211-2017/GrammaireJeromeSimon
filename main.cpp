@@ -8,10 +8,12 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 	string a = "";
+
+	cout << "Entrez la formule : ";
 	getline(cin, a);
 	Automate automate(a);
-	
-	cout << "Calcul : " << automate.value() << endl;
-	
+
+	cout << "Resultat : " << automate.value() << endl;
+
 	return 0;
 }
