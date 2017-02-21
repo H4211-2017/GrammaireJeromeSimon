@@ -13,6 +13,7 @@
 #include <string>
 
 #include "Lexer.h"
+#include "State.h"
 
 //--------------------------------------------------- Interfaces utilisées
 
@@ -25,6 +26,8 @@
 //
 //
 //------------------------------------------------------------------------ 
+
+class State;
 
 class Automate
 {

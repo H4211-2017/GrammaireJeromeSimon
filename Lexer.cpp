@@ -12,6 +12,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstdlib>
 
 //------------------------------------------------------ Include personnel
 #include "Lexer.h"
@@ -161,7 +162,7 @@ void Lexer::defineCurToken()
 		t.strValue = tampon;
 		if(t.type == VAL)
 		{
-			t.value = stoi(tampon);
+			t.value = atoi(tampon.c_str());
 		}
 	}
 	this->curToken = t;	
