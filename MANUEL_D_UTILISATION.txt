@@ -1,0 +1,32 @@
+======= USAGE 1 ========
+./Grammaire.exe
+
+- Permet d'ecrire a la main les formules. On demande a l'utilisateur 
+d'entrer les formules de son choix une par une. Le resultat est ecrit 
+a la suite de chaque formule.
+- L'utilisateur peut entre "Q"/"q" a la place d'une formule quand il
+a fini son travail pour quitter l'application.
+
+
+======= USAGE 2 =======
+./Grammaire.exe INPUTFILE [OUTPUTFILE]
+
+- L'application lit le fichier INPUTFILE en supposant qu'on y a ecrit
+une formule par ligne (sans aucun autre formatage supplementaire).
+- Le resultat est ecrit dans un fichier OUTPUTFILE. Si le fichier
+OUTPUTFILE n'est pas specifie, il ecrira par defaut dans un fichier
+resultats.txt.
+- Une fois la fin du fichier INPUTFILE atteinte, l'application se
+termine automatiquement.
+- ATTENTION : Le fichier OUTPUTFILE (ou resultats.txt a defaut) est 
+ecrase dans la procedure.
+
+
+======= Notes Communes =======
+
+- En cas de caractere illegal ou de formule mal ecrite, l'application
+signale automatiquement la faute par un message d'erreur (ecrite dans
+le fichier dans le cadre du second mode d'utilisation) et arrete la
+lecture de la formule erronee. 
+- Dans le cas de figure ci-dessus, l'execution de l'application continue
+et reprend a la lecture de la formule suivante.
