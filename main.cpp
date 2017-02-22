@@ -39,10 +39,10 @@ void sansArgs()
 	{
 		string a = "";
 
-		cout << "Entrez la formule : ";
+		cout << "Entrez la formule (Q pour quitter) : ";
 		getline(cin, a);
-
-		try 
+        if(a == "Q" || a == "q") break;
+		try
 		{
 			Automate automate(a);
 			cout << "Resultat : " << automate.value() << endl;
@@ -69,9 +69,9 @@ void deuxArgs(string un, string deux)
 		stringstream sortie;
 		while(getline(fichier, ligne))
 		{
-			try 
+			try
 			{
-				
+
 				Automate automate(ligne);
 				sortie << "Resultat : " << automate.value() << endl << endl;
 			}
@@ -80,14 +80,14 @@ void deuxArgs(string un, string deux)
 				sortie << chaine << endl << endl;
 			}
 		}
-		
+
 		ofstream ecriture(deux, ios::out | ios::trunc);
 		if(ecriture)
 		{
 			ecriture << sortie.str();
 			ecriture.close();
 		}
-		
+
 		fichier.close();
 	}
 }
